@@ -23,20 +23,20 @@
 
     <h1>Hangman</h1>
 
-    <p>Press any key to get started!</p>
+    <p>Press any key to get started!</p><br>
 
     <p>Wins: </p>
+    <p id="winsHere"></p><br>
 
-    <p id="onClickEvent">Current Word</p>
+    <p>Current Word:</p>
+    <p id="currentWordHere"></p><br>
 
     <p>Number of Guesses Remaining</p>
-    <p id="guessesHere"></p>
+    <p id="guessesHere"></p><br>
 
-
-    <p>Computer Word: </p>
 
     <p>Letters Already Guessed</p>
-    <p id="lettersHere"></p>
+    <p id="lettersHere"></p><br>
 
 
     <script>
@@ -48,10 +48,27 @@
 
             // Click example
             $("#onClickEvent").on("click", function(clickEvent) {
-                alert("I'm gay");
+                alert("text clicked!");
 
             });
 
+            
+
+
+            // array of possible words
+            var hangmanWords = ["frodo","gandalf","samwise","merry","pippin","aragorn","mithrandir","strider","legolas","gimli","boromir","sauron","nazgul","gollum","smeagol","bilbo","glorfindel","elrond","arwen","galadriel","saruman","eomer","theoden","wormtongue","shadowfax","treebeard","shelob","faramir","denethor"];
+            var currentWord = hangmanWords[Math.floor(Math.random() * hangmanWords.length)];
+            var currentWordSplit = currentWord.split("");
+            var currentWordBlank = "";
+            for (n=0; n < currentWord.length; n++) {
+                currentWordBlank = currentWordBlank + "_ ";
+            };
+            $("#currentWordHere").html(currentWord + currentWordBlank);
+            console.log(currentWord);
+
+            // defines and prints wins counter
+            var winsCounter = 0;
+            $("#winsHere").html(winsCounter);
 
 
             // defines and prints guess counter
@@ -63,109 +80,144 @@
             var letterPressed = "not pressed yet";
             var letterArray = [];
 
+            // checks if letter typed is a new letter
+            var letterUnique = true;
+
+            // checks if letter is correct
+            var letterCorrect = false;
+
+            function addGuessedLetter(key) {
+                letterArray.push(key);
+            }
+
+            function getUnderscoreWord() {
+                var word = "";
+
+
+                for (n=0; n < currentWord.length; n++) {
+                    
+                }
+            }
+
            
-           $("#onKeyUp").keypress(function(keyPressEvent) {
+            $("#onKeyUp").keypress(function(keyPressEvent) {
 
                
+                // IF - checks if key is a letter
+                if ((keyPressEvent.which < 97) || (keyPressEvent.which > 122)) {
+
+                    alert("please type a letter (lowercase)");
+                    
+                } else {
+            
+                    // logs key pressed as a letter
+                    letterPressed = String.fromCharCode(keyPressEvent.which);
+                    
+                    
+                    for (n=0; n < currentWord.length; n++) {
+
+                        // IF letter is correct, then show the letter and set letterCorrect to true
+                        if (letterPressed === currentWordSplit[n]) {
+                            /*
+                            var indexLetter = // indexof()
+                            for (m=0; m < currentWord.length; m++) {
+                                if (m === c)
+                                currentWordBlank = currentWordBlank + "_ ";
+                            };
+                            */
+                            alert("correct!");
+                            letterCorrect = true;
+                        };
+
+                    };
+
+                    
+                    
+                    /*
+                    $("#currentWordHere").html(currentWord + currentWordBlank);
+                    */
 
 
-                // logs key pressed as a letter
-                letterPressed = String.fromCharCode(keyPressEvent.which);
-
-
-                // IF letter repeats, do nothing. IF it's a new letter, do everything.
-                /*
-                for (n = 0; n < letterArray.length; n++) {
-                    if (letterPressed === letterArray[n]) { // DON'T FORGET --- add OR statement for letters guessed in the computer word
-                        alert("you already guessed that letter you idiot");
                         
-                    } else {
+                    // LOOP - checks if the letter has already been typed
+                    for (n = 0; n <= letterArray.length; n++) { // DON'T FORGET --- add OR statement for letters guessed in the computer word
+                        
+                        // IF letter has been typed already, set letterUnique to false
+                        if (letterPressed === letterArray[n]) {
+                            letterUnique = false;
+                        };
 
+
+                    };
+
+                    
+                    // IF - checks if letter is unique
+                    if (letterUnique) {
+
+                        // subtracts from # of guesses remaining
                         guessCounter--;
 
                                         
                         // adds letter to the array
-                        letterArray.push(letterPressed);
+                        addGuessedLetter(letterPressed);
 
-                        // removes the ","" in the array
+                        // removes the "," in the array
                         letterArrayShow = letterArray.join(" ");
 
 
                         // when you run out of guesses
                         if (guessCounter === 0) {
 
-                            alert("GAME OVER bitch");
+                            alert("GAME OVER");
                             letterArray = [];
                             letterArrayShow = letterArray.join(" ");
                             
                             // resets guess counter
                             guessCounter = 5;
 
-                        }
+                        };
 
-                    }
-                }*/
-
-
-
-
-                if (letterPressed === letterArray[0]) { // DON'T FORGET --- add OR statement for letters guessed in the computer word
-                    alert("you already guessed that letter you idiot");
-                } else {
-
-                    guessCounter--;
-
-                                    
-                    // adds letter to the array
-                    letterArray.push(letterPressed);
-
-                    // removes the ","" in the array
-                    letterArrayShow = letterArray.join(" ");
-
-
-                    // when you run out of guesses
-                    if (guessCounter === 0) {
-
-                        alert("GAME OVER bitch");
-                        letterArray = [];
-                        letterArrayShow = letterArray.join(" ");
                         
-                        // resets guess counter
-                        guessCounter = 5;
+                    // IF - letter is NOT unique
+                    } else if (letterUnique === false) {
 
-                    }
+                        alert("you've already typed that letter, sir/madam");
+                        letterUnique = true;
 
-                }
+                    } else {
+                        alert("something went wrong");
+                    }; // close - is letter unique
 
-                
+                    
+                    
 
-
-                $("#lettersHere").html("<h1>" + letterArrayShow + "</h1>");
-                $("#guessesHere").html(guessCounter);
-
-
-
-                
-
-               
+                    
 
 
+
+                    
 
                 
-
-                
-
-
-
-           });
+                    // shows the letters guessed
+                    $("#lettersHere").html("<h1>" + letterArrayShow + "</h1>");
+                    // shows the guess count
+                    $("#guessesHere").html(guessCounter);
 
 
+                    
+
+                }; // close - is the key a letter
+
+
+
+            }); // close - key pressed
 
 
 
 
 
-// for (n=0; n < letterArray.length; n++) {
+
+
                    
 
 
