@@ -1,11 +1,8 @@
 
 
-
 h1 {
     color: black;
     font-family: 'Lato', sans-serif;
-    font-size: 2rem;
-    line-height: 3rem;
     text-align: center;
 }
 
@@ -14,10 +11,27 @@ p {
     color: black;
     font-family: 'Lato', sans-serif;
     font-size: 1.5rem;
-    line-height: 2rem;
     text-align: center;
-
 }
+
+#instructions {
+    font-size: 1.3rem;
+}
+
+.hangmanWord {
+    font-size: 2.4rem;
+}
+
+
+.LOTR-background { 
+    background-image: url(../images/lotr-map-pic2.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
 
 
 
