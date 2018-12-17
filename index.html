@@ -34,7 +34,7 @@
             <!-- Jumbotron with Title -->
             <!-- give the top a bit of space -->
             <br>
-            <div class="jumbotron">
+            <div class="jumbotron jumbotron-custom">
                 <h1 class="text-center">
                 <strong>Hangman: Lord of the Rings Version</strong>
                 </h1>
@@ -54,23 +54,14 @@
             <div class="row">
 
                 <!-- Left panel - LOTR image-->
-                <div class="col-lg-6">
-                    <div class="card">
-                        <img class="card-img-top" src="assets/images/lotr-pic.png" alt="Whoops, img here">
-                        <div class="card-body">
-                            <p class="card-text">Lord of the Rings rules. Enjoy!</p>
-                        </div>
-                    </div>
+                <div class="col-6">
+                    <img class="card-img-top" src="./assets/images/lotr-pic.png" alt="Whoops, img here">
                 </div>
-
-                <!-- LOTR Image 
-                <img src="assets/images/lotr-pic.png" alt="" class="img lotr-pic"> -->
                 
-
-                <div class="col-lg-6">
+                <div class="col-6">
 
                     <!-- Press a key -->
-                    <div id="sizeControls" class="card">
+                    <div id="sizeControls" class="card card-custom">
                         <h4 class="card-header text-center">Instructions</h4>
                         <div class="card-body">
                             <p id="instructions" class="card-text">Try to guess the word! Just press a key to get started. Hint: the words are all characters from Lord of the Rings.</p>
@@ -78,13 +69,13 @@
                     </div>
 
                     <!-- Wins -->
-                    <div id="visibilityControls" class="card">
+                    <div id="visibilityControls" class="card card-custom">
                         <h4 class="card-header text-center">Wins: </h4>
                         <p id="winsHere"></p>
                     </div>
 
                     <!-- Guesses Remaining -->
-                    <div id="visibilityControls" class="card">
+                    <div id="visibilityControls" class="card card-custom">
                         <h4 class="card-header text-center">Guesses Remaining: </h4>
                         <div class="text-center">
                             <p id="guessesHere"></p>
@@ -92,7 +83,7 @@
                     </div>
 
                     <!-- Word card -->
-                    <div id="stretchControls" class="card">
+                    <div id="stretchControls" class="card card-custom">
                         <h4 class="card-header text-center">Word</h4>
                         <div class="card-body">
                             <div class="text-center">
@@ -103,7 +94,7 @@
 
 
                     <!-- Letters already used -->
-                    <div id="visibilityControls" class="card">
+                    <div id="visibilityControls" class="card card-custom">
                         <h4 class="card-header text-center">Letters Already Used: </h4>
                         <div class="card-body">
                             <div class="text-center">
@@ -117,7 +108,8 @@
                 </div>
 
             <!-- give the bottom a bit of space -->                
-            </div><br>
+            </div>
+            <br></br>
         </div>
 
     </div>

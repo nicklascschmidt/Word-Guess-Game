@@ -31,6 +31,15 @@ p {
     background-size: cover;
 }
 
+.card-custom {
+    margin: 10px;
+    opacity: .9;
+}
+
+.jumbotron-custom {
+    opacity: .9;
+}
+
 
 
 
